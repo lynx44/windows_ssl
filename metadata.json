@@ -1,0 +1,30 @@
+{
+  "name": "windows_ssl",
+  "description": "Installs/Configures windows_ssl",
+  "long_description": "windows_ssl Cookbook\n====================\nThis cookbook installs and binds SSL certificates on Windows\n\nRequirements\n------------\n\nCookbooks\n---------\nwindows\n\nResource/Provider\n-----------------\n\nimport_certificate\n==================\n\n### Actions\n\n:import - imports the certificate into the certificate store\n\n### Attribute Parameters\n\n- path: the path to the certificate\n- password: the password for the certificate file\n- type: the type of certificate (currently only supports pfx)\n\n### Examples\n\n    windows_ssl_import_certificate \"import the ssl cert\" do\n        path 'c:\\certificate.pfx'\n        password 'p@ssw0rd'\n        type :pfx\n        action :import\n    end\n\nbind_certificate\n================\n\n### Actions\n\n:bind - binds a certificate to a port\n\n### Attribute Parameters\n\n- hash: the certificate hash\n- port: the port\n- ip_address: the ip address to bind to. Defaults to 0.0.0.0 (any ip address)\n- app_guid: the application guid. Defaults to 00000000-0000-0000-0000-000000000000 (any application)\n\n### Examples\n\n    windows_ssl_bind_certificate \"bind the ssl cert\" do\n        hash '991deaa340c14b45214927f58a8b7288d9ce6906'\n        port 443\n        ip_address '0.0.0.0'\n        app_guid '1A25F4DE-A3DE-FEA2-EAF0-023FA1AD324'\n        action :bind\n    end",
+  "maintainer": "Standard Edge",
+  "maintainer_email": "",
+  "license": "All rights reserved",
+  "platforms": {
+  },
+  "dependencies": {
+    "windows": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.1.0"
+}

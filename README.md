@@ -5,6 +5,9 @@ This cookbook installs and binds SSL certificates on Windows
 Requirements
 ------------
 
+- Windows server 2008  
+- Windows server 2012 (untested)  
+
 Cookbooks
 ---------
 windows

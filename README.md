@@ -5,8 +5,9 @@ This cookbook installs and binds SSL certificates on Windows
 Requirements
 ------------
 
-- Windows server 2008  
-- Windows server 2012 (untested)  
+- Windows server 2008 R2
+- Windows server 2012 
+- Windows server 2016 
 
 Cookbooks
 ---------
@@ -46,7 +47,7 @@ bind_certificate
 
 ### Attribute Parameters
 
-- hash: the certificate hash
+- certificate_hash: the certificate hash
 - port: the port
 - ip_address: the ip address to bind to. Defaults to 0.0.0.0 (any ip address)
 - app_guid: the application guid. Defaults to 00000000-0000-0000-0000-000000000000 (any application)
@@ -54,7 +55,7 @@ bind_certificate
 ### Examples
 
     windows_ssl_bind_certificate "bind the ssl cert" do
-        hash '991deaa340c14b45214927f58a8b7288d9ce6906'
+        certificate_hash '991deaa340c14b45214927f58a8b7288d9ce6906'
         port 443
         ip_address '0.0.0.0'
         app_guid '1A25F4DE-A3DE-FEA2-EAF0-023FA1AD324'

@@ -3,7 +3,7 @@
 include Chef::Mixin::ShellOut
 
 action :bind do
-	hash = @new_resource.hash
+	certificate_hash = @new_resource.certificate_hash
 	ip_address = @new_resource.ip_address
 	port = @new_resource.port
 	app_guid = @new_resource.app_guid
@@ -18,8 +18,8 @@ action :bind do
     verifyCertificateIsBindable(certificateInfo)
   end
 
-	execute "install ssl certificate #{hash}" do
-		command "netsh http add sslcert ipport=#{ip_address}:#{port} certhash=#{hash} appid={#{app_guid}}"
+	execute "install ssl certificate #{certificate_hash}" do
+		command "netsh http add sslcert ipport=#{ip_address}:#{port} certhash=#{certificate_hash} appid={#{app_guid}}"
     only_if { unbound }
 		action :run
 	end
@@ -59,7 +59,7 @@ def verifyCertificateIsBindable(certificateInfo)
   currentHash = getCurrentCertificateHash(certificateInfo)
   currentAppGuid = getCurrentApplicationGuid(certificateInfo)
   currentIpAddress = getCurrentIpAddress = getCurrentIpAddress(certificateInfo)
-  if(currentHash != @new_resource.hash ||
+  if(currentHash != @new_resource.certificate_hash ||
       currentAppGuid != @new_resource.app_guid ||
       currentIpAddress != @new_resource.ip_address)
     raise "There is already a certificate bound to port #{@new_resource.port}. Conflicting certificate info:\n" + certificateInfo

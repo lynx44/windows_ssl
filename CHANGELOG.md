@@ -2,6 +2,9 @@
 
 This file is used to list changes made in each version of windows_ssl.
 
+## 0.1.1
+* Attribute name changes for Chef 13 compatibility
+
 ## 0.1.0:
 
 * Initial release of windows_ssl
